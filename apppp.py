@@ -7,51 +7,54 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def home():
 
-    # When website is opened normally
-    if request.method == "GET":
-        return render_template("index.html")
+    result = None
+    error = None
 
-    # When user submits the fitness form
-    try:
-        age = float(request.form.get("age", 0))
-        weight = float(request.form.get("weight", 0))
-        height = float(request.form.get("height", 0))
-        goal = request.form.get("goal", "")
-        activity = request.form.get("activity", "")
-
-        # Validate inputs
-        if age <= 0 or weight <= 0 or height <= 0:
-            return render_template(
-                "index.html",
-                error="Please enter valid age, weight and height."
-            )
-
-        # Calculate BMI
-        height_m = height / 100
-        bmi = round(weight / (height_m ** 2), 2)
-
-        # Get prediction from model
+    if request.method == "POST":
         try:
-            prediction = predict_fitness_plan(age, weight, height, goal, activity)
-        except Exception:
-            prediction = "Personalized Fitness Plan"
+            age = request.form.get("age")
+            weight = request.form.get("weight")
+            height = request.form.get("height")
+            goal = request.form.get("goal")
+            activity_level = request.form.get("activity_level")
 
-        return render_template(
-            "index.html",
-            bmi=bmi,
-            prediction=prediction,
-            age=age,
-            weight=weight,
-            height=height,
-            goal=goal,
-            activity=activity
-        )
+            # Check if all fields are filled
+            if not all([age, weight, height, goal, activity_level]):
+                error = "Please fill in all the fields."
 
-    except Exception as e:
-        return render_template(
-            "index.html",
-            error=f"Something went wrong: {str(e)}"
-        )
+            else:
+                age = int(age)
+                weight = float(weight)
+                height = float(height)
+
+                # Calculate BMI
+                height_in_meters = height / 100
+                bmi = weight / (height_in_meters ** 2)
+
+                # Get AI Fitness Plan
+                fitness_plan = predict_fitness_plan(
+                    bmi,
+                    activity_level,
+                    goal
+                )
+
+                result = {
+                    "age": age,
+                    "bmi": round(bmi, 2),
+                    "plan": fitness_plan["plan"],
+                    "workout": fitness_plan["workout"],
+                    "diet": fitness_plan["diet"],
+                    "schedule": fitness_plan["schedule"]
+                }
+
+        except Exception as e:
+            error = f"Something went wrong: {str(e)}"
+
+    return render_template(
+        "index.html",
+        result=result,
+        error=error
+    )
 
 
 if __name__ == "__main__":
