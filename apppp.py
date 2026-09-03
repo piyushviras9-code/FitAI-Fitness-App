@@ -11,7 +11,7 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
 
-    # Get values from form
+    # Get user input
     age = int(request.form.get("age"))
     weight = float(request.form.get("weight"))
     height = float(request.form.get("height"))
@@ -20,42 +20,99 @@ def predict():
 
     # Calculate BMI
     height_m = height / 100
-    bmi = round(weight / (height_m * height_m), 2)
+    bmi = round(weight / (height_m ** 2), 2)
 
-    # Generate Fitness Recommendation
+    # BMI Category
+    if bmi < 18.5:
+        bmi_category = "Underweight"
+    elif bmi < 25:
+        bmi_category = "Normal Weight"
+    elif bmi < 30:
+        bmi_category = "Overweight"
+    else:
+        bmi_category = "Obese"
+
+    # Generate detailed fitness recommendation
     if goal == "Weight Loss":
-        prediction = (
-            "Focus on cardio exercises, calorie control, "
-            "healthy food and regular workouts."
-        )
+
+        prediction = f"""
+Your BMI is {bmi}, which falls under the {bmi_category} category.
+
+Recommended Fitness Plan: Weight Loss Program
+
+Exercise Recommendation:
+• Cardio exercises such as running, cycling and skipping.
+• Strength training 3 to 4 times per week.
+• Aim for 30 to 45 minutes of physical activity daily.
+
+Diet Recommendation:
+• Focus on a balanced and calorie-controlled diet.
+• Eat more vegetables, fruits and protein-rich foods.
+• Reduce sugary drinks and processed food.
+
+Activity Level Advice:
+• Your current activity level is {activity_level}.
+• Gradually increase your daily physical activity.
+
+Final Recommendation:
+Maintain consistency, proper sleep and a healthy diet for better results.
+"""
 
     elif goal == "Muscle Gain":
-        prediction = (
-            "Focus on strength training, protein-rich food "
-            "and regular muscle-building exercises."
-        )
+
+        prediction = f"""
+Your BMI is {bmi}, which falls under the {bmi_category} category.
+
+Recommended Fitness Plan: Muscle Gain Program
+
+Exercise Recommendation:
+• Focus on strength training and progressive overload.
+• Include exercises such as squats, push-ups, bench press and rows.
+• Train major muscle groups 4 to 5 days per week.
+
+Diet Recommendation:
+• Consume protein-rich foods such as eggs, chicken, paneer, milk and pulses.
+• Include healthy carbohydrates for energy.
+• Drink enough water throughout the day.
+
+Activity Level Advice:
+• Your current activity level is {activity_level}.
+• Balance intense workouts with proper rest and recovery.
+
+Final Recommendation:
+Follow a consistent workout routine and maintain proper nutrition to support muscle growth.
+"""
 
     else:
-        prediction = (
-            "Follow a balanced workout routine with proper diet "
-            "and regular physical activity."
-        )
 
-    # Add activity level recommendation
-    if activity_level == "Low":
-        prediction += " Start with light exercises and gradually increase intensity."
+        prediction = f"""
+Your BMI is {bmi}, which falls under the {bmi_category} category.
 
-    elif activity_level == "Moderate":
-        prediction += " Maintain a balanced combination of cardio and strength training."
+Recommended Fitness Plan: Fitness Maintenance Program
 
-    elif activity_level == "High":
-        prediction += " Continue advanced workouts with proper rest and recovery."
+Exercise Recommendation:
+• Follow a combination of cardio and strength training.
+• Exercise at least 4 to 5 days per week.
+• Include stretching and flexibility exercises.
 
-    # Send result back to same page
+Diet Recommendation:
+• Maintain a balanced diet with protein, carbohydrates and healthy fats.
+• Eat fresh fruits and vegetables.
+• Stay properly hydrated.
+
+Activity Level Advice:
+• Your current activity level is {activity_level}.
+• Maintain a regular and active lifestyle.
+
+Final Recommendation:
+Continue following a balanced fitness routine to maintain your overall health and fitness.
+"""
+
     return render_template(
         "index.html",
         prediction=prediction,
-        bmi=bmi
+        bmi=bmi,
+        bmi_category=bmi_category
     )
 
 
