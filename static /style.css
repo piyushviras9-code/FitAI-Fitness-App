@@ -1,7 +1,3 @@
-/* ================================
-   GLOBAL SETTINGS
-================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -9,401 +5,323 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #e3edf7, #cbd8e6);
-    color: #222;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fb;
+    color: #1e293b;
     min-height: 100vh;
 }
 
+/* Background */
 
-/* ================================
-   HEADER
-================================ */
-
-header {
-    text-align: center;
-    padding: 35px 20px;
-    background: linear-gradient(135deg, #243b72, #40558d);
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at top left, #dbeafe, transparent 40%),
+        radial-gradient(circle at bottom right, #dcfce7, transparent 40%);
+    z-index: -1;
 }
 
-.header-content h1 {
-    font-size: 32px;
-    margin-bottom: 12px;
+/* Navbar */
+
+.navbar {
+    width: 100%;
+    padding: 18px 8%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.header-content p {
-    font-size: 17px;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: auto;
+.logo {
+    font-size: 24px;
+    font-weight: 700;
 }
 
+.logo span {
+    color: #2563eb;
+}
 
-/* ================================
-   MAIN CONTAINER
-================================ */
+.nav-text {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Main Container */
 
 .container {
     width: 90%;
-    max-width: 1000px;
-    margin: 35px auto;
+    max-width: 1200px;
+    margin: auto;
 }
 
+/* Hero */
 
-/* ================================
-   FEATURE CARDS
-================================ */
+.hero {
+    min-height: 380px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+    align-items: center;
+    padding: 70px 0;
+}
+
+.tag {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #dbeafe;
+    color: #2563eb;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #2563eb;
+}
+
+.hero p {
+    color: #64748b;
+    line-height: 1.8;
+    font-size: 16px;
+    max-width: 650px;
+}
+
+/* Features */
 
 .features {
     display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 35px;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
-.feature-card {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px 20px;
-    border-radius: 18px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    transition: 0.3s;
+.feature {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-width: 180px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
-.feature-card:hover {
-    transform: translateY(-5px);
+.feature span {
+    font-size: 11px;
+    color: #64748b;
 }
 
-.feature-card span {
-    font-size: 38px;
-}
-
-.feature-card h3 {
-    color: #40558d;
-    margin: 15px 0 10px;
-    font-size: 20px;
-}
-
-.feature-card p {
-    color: #666;
-    line-height: 1.6;
-}
-
-
-/* ================================
-   FORM CARD
-================================ */
-
-.card {
-    background: rgba(255, 255, 255, 0.92);
-    padding: 35px;
-    border-radius: 20px;
-    max-width: 700px;
-    margin: auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-
-.card h2 {
-    text-align: center;
-    color: #243b72;
-    margin-bottom: 25px;
-}
-
-label {
+.feature strong {
     display: block;
-    margin-top: 15px;
-    margin-bottom: 7px;
-    font-weight: bold;
-    color: #333;
+    color: #1e293b;
+    font-size: 13px;
+}
+
+/* AI Circle */
+
+.hero-image {
+    text-align: center;
+}
+
+.ai-circle {
+    width: 230px;
+    height: 230px;
+    margin: auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+}
+
+.hero-image h2 {
+    margin-top: 25px;
+    color: #2563eb;
+}
+
+.hero-image p {
+    font-size: 14px;
+}
+
+/* Form Section */
+
+.form-section {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.form-header {
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Form Grid */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 input,
 select {
     width: 100%;
     padding: 13px;
-    border: 1px solid #ccc;
+    border: 1px solid #dbe1ea;
     border-radius: 10px;
-    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
     outline: none;
+    transition: 0.3s;
 }
 
 input:focus,
 select:focus {
-    border-color: #40558d;
-    box-shadow: 0 0 5px rgba(64, 85, 141, 0.3);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
 }
 
+/* Button */
 
-/* ================================
-   BUTTON
-================================ */
-
-button {
+.generate-btn {
     width: 100%;
-    padding: 15px;
-    margin-top: 25px;
+    margin-top: 30px;
+    padding: 16px;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(135deg, #40558d, #243b72);
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
     color: white;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
 }
 
-button:hover {
+.generate-btn:hover {
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37,99,235,0.3);
 }
 
+/* Result */
 
-/* ================================
-   RESULTS
-================================ */
-
-.result {
-    margin-top: 20px;
-}
-
-.result > h2 {
+.result-section {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    margin-bottom: 40px;
     text-align: center;
-    color: #243b72;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.result-section h2 {
     margin-bottom: 25px;
-    font-size: 28px;
 }
 
-.result-box {
-    background: rgba(255, 255, 255, 0.92);
-    padding: 28px;
-    margin-bottom: 20px;
-    border-radius: 18px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
-}
-
-.result-box h3 {
-    color: #40558d;
-    margin-bottom: 18px;
-    font-size: 21px;
-}
-
-.result-box p {
-    line-height: 1.7;
-    margin-bottom: 10px;
-}
-
-
-/* ================================
-   FITNESS SCORE
-================================ */
-
-.fitness-score-box {
-    text-align: center;
-}
-
-.score-number {
-    font-size: 42px;
-    font-weight: bold;
-    color: #243b72;
-    margin: 15px 0;
-}
-
-.score-number span {
-    font-size: 22px;
-    color: #666;
-}
-
-.progress-container {
-    width: 100%;
-    height: 28px;
-    background: #d9dfe8;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 20px 0;
-    border: 1px solid #c3cad5;
-}
-
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #40558d, #00bcd4);
-    border-radius: 20px;
-    transition: width 1s ease-in-out;
-}
-
-.score-text {
-    color: #666;
-    font-size: 15px;
-}
-
-
-/* ================================
-   AI HEALTH INSIGHTS
-================================ */
-
-.insights-box {
-    border-left: 6px solid #40558d;
-}
-
-.insights-box ul {
-    padding-left: 25px;
-}
-
-.insights-box li {
-    margin-bottom: 14px;
-    line-height: 1.6;
-    color: #444;
-}
-
-
-/* ================================
-   MACHINE LEARNING PREDICTION
-================================ */
-
-.ai-box {
-    border-left: 6px solid #00bcd4;
-}
-
-
-/* ================================
-   CALORIE ANALYSIS
-================================ */
-
-.calorie-box {
-    text-align: center;
-}
-
-.calorie-grid {
+.result-card {
     display: flex;
-    gap: 20px;
-    margin: 25px 0;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-.calorie-card {
-    flex: 1;
-    background: linear-gradient(135deg, #eef3ff, #ffffff);
-    padding: 25px 15px;
+.result-item {
+    background: #f8fafc;
+    padding: 25px 50px;
     border-radius: 15px;
-    border: 1px solid #d5def5;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
 }
 
-.target-card {
-    background: linear-gradient(135deg, #e8f9fb, #ffffff);
-}
-
-.calorie-card h4 {
-    color: #40558d;
-    font-size: 17px;
-    margin-bottom: 15px;
-}
-
-.calorie-number {
-    font-size: 38px;
-    font-weight: bold;
-    color: #243b72;
+.result-item span {
+    display: block;
+    color: #64748b;
     margin-bottom: 8px;
 }
 
-.calorie-card p {
-    color: #666;
-    font-size: 15px;
+.result-item strong {
+    font-size: 20px;
+    color: #2563eb;
 }
 
-.calorie-info {
-    color: #666;
-    font-size: 14px;
-    margin-top: 15px;
-}
-
-
-/* ================================
-   ABOUT SECTION
-================================ */
-
-.about {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    margin: 35px 0 20px;
-    border-radius: 18px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
-}
-
-.about h2 {
-    color: #243b72;
-    margin-bottom: 15px;
-}
-
-.about p {
-    line-height: 1.7;
-    color: #555;
-}
-
-
-/* ================================
-   DISCLAIMER
-================================ */
-
-.disclaimer {
-    background: #fff3cd;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    line-height: 1.7;
-    color: #664d03;
-}
-
-
-/* ================================
-   FOOTER
-================================ */
+/* Footer */
 
 footer {
     text-align: center;
-    background: #243b72;
-    color: white;
-    padding: 25px 20px;
-    margin-top: 40px;
+    padding: 30px 0;
+    color: #64748b;
+}
+
+footer h3 {
+    color: #1e293b;
+    margin-bottom: 8px;
 }
 
 footer p {
-    margin: 5px 0;
+    font-size: 13px;
 }
 
+/* Mobile */
 
-/* ================================
-   MOBILE RESPONSIVE DESIGN
-================================ */
+@media (max-width: 850px) {
 
-@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-content p {
+        margin: auto;
+    }
 
     .features {
+        justify-content: center;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
         flex-direction: column;
+        gap: 8px;
     }
 
-    .calorie-grid {
-        flex-direction: column;
+    .hero h1 {
+        font-size: 36px;
     }
-
-    .container {
-        width: 92%;
-    }
-
-    .card {
-        padding: 25px 20px;
-    }
-
-    .header-content h1 {
-        font-size: 26px;
-    }
-
-    .score-number {
-        font-size: 35px;
-    }
-
-    .calorie-number {
-        font-size: 32px;
-    }
-
 }
